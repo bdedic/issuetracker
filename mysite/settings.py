@@ -25,7 +25,7 @@ SECRET_KEY = '!q3_op4o=t2_3yp@b7!d6%0%#stck$ef2dozrn51*&w(m04cb_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['minitracker.herokuapp.com']
 
 
 # Application definition
