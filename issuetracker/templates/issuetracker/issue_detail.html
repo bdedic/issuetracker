@@ -1,0 +1,9 @@
+{% extends 'issuetracker/base.html' %}
+
+{% block content %}
+<h1>{{ object.description }}</h1>
+<p>{{ object.submitter }}</p>
+<p>Status: {{ object.status }}</p>
+<p>Category: {{ object.category }}</p>
+
+{% endblock %}

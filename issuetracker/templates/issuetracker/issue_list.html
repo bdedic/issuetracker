@@ -1,0 +1,57 @@
+{% extends "issuetracker/base.html" %}
+{% block content %}
+<h1>Issue List</h1>
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+<table>
+
+  <tr>
+      {% if user.is_authenticated %}
+      <th>Link</th>
+      {% endif %}
+      <th>Submiter</th>
+      <th>Solver</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Category</th>
+      <th>Opened</th>
+      <th>Updated</th>
+  </tr>
+    {% for obj in object_list %}
+  <tr>
+      {% if user.is_authenticated %}
+      <td><a href="{% url 'issue-update' obj.id %}">Edit</a></td>
+      {% endif %}
+    <td>{{obj.submitter}}</td>
+    <td>{{obj.solver}}</td>
+    <td>{{obj.description}}</td>
+      <td>{{obj.status}}</td>
+      <td>{{obj.category}}</td>
+      <td>{{obj.opened}}</td>
+      <td>{{obj.updated}}</td>
+  </tr>
+    {% endfor %}
+</table>
+<form method="GET" action="{% url 'stat_view' %}">
+    <button class="btn btn-primary" type="submit">Back</button>
+</form>
+
+{% endblock content%}
+
+</body>
+</html>

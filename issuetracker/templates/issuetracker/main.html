@@ -1,0 +1,55 @@
+{% extends "issuetracker/base.html" %}
+{% block content %}
+        <div class="row">
+            {% if user.is_authenticated %}
+                    <div class="col-md-1 col-md-offset-11">
+                        <form method="GET" action="{% url 'create_issue' %}">
+                        <button class="btn btn-primary" type="submit">Create Issue</button>
+                        </form>
+                    </div>
+            {% endif %}
+        </div>
+
+        <div class="row medium-margin-top">
+            <div class="col-md-12">
+                    <div class="box text-center">
+                        <h3 class="text-center"><a href="issue_list.html">{{obj.description}}</a></h3>
+                        <div><strong>View Tasks:</strong> <a href="/issues/" class="small">All</a> | <a href="/open/" class="small">Opened</a></div>
+                        <div><strong>Stats:</strong> <span class="small"> {{all_docs}} Open, {{count}} Closed</span></div><br/><br/>
+                        <div>
+                            <style>
+                            table {
+                            font-family: arial, sans-serif;
+                            border-collapse: collapse;
+                            width: 100%;
+                        }
+
+                        td, th {
+                            border: 1px solid #dddddd;
+                            text-align: left;
+                            padding: 8px;
+                        }
+
+                        tr:nth-child(even) {
+                            background-color: #dddddd;
+                        }
+                        </style>
+                        <table>
+                          <tr>
+                              <th>Longest Resolution Time</th>
+                              <th>Shortest Resolution Time</th>
+                              <th>Average Resolution Time</th>
+
+                          </tr>
+                          <tr>
+                              <td>{{maximum}}</td>
+                              <td>{{minimum}}</td>
+                              <td>{{average}}</td>
+                          </tr>
+                        </table>
+                        </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+{% endblock %}

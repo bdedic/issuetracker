@@ -1,0 +1,14 @@
+{% extends "issuetracker/base.html" %}
+
+{% block content %}
+
+<h2>Create Issue</h2><br/>
+<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form><br/>
+<form method="GET" action="{% url 'stat_view' %}">
+    <button class="btn btn-primary" type="submit">Back</button>
+</form>
+
+{% endblock content %}
